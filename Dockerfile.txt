@@ -1,9 +1,6 @@
 FROM maven:3.5.4-jdk-8 AS build
-
-
-RUN mvn -f /var/lib/jenkins/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-SNAPSHOT.pom clean package
-
-FROM openjdk:8
-COPY --from=build /var/lib/jenkins/workspace/Docker/target/my-app-1.0-SNAPSHOT.jar /usr/app/my-app-1.0-SNAPSHOT.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/app/my-app-SNAPSHOT.jar"]
+COPY src /usr/local/service/src
+COPY pom.xml /usr/local/service/pom.xml
+WORKDIR /usr/local/service
+RUN mvn clean package
+CMD[ "java", "-cp", "target/my-app-1.0-SNAPSHOT.jar/" ]
