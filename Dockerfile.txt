@@ -3,6 +3,6 @@ FROM maven:3.5.4-jdk-8 AS build
 RUN mvn -f /var/lib/jenkins/workspace/Docker/pom.xml clean package
 
 FROM openjdk:8
-COPY --from=build /var/lib/jenkins/workspace/Docker/target/my-app-1.0-SNAPSHOT.jar /usr/app/my-app-SNAPSHOT.jar
+COPY --from=build /var/lib/jenkins/workspace/Docker/target/my-app-1.0-SNAPSHOT.jar /usr/app/my-app-1.0-SNAPSHOT.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/usr/app/my-app-SNAPSHOT.jar"]
