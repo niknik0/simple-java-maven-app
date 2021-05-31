@@ -3,4 +3,4 @@ COPY src /usr/local/service/src
 COPY pom.xml /usr/local/service/pom.xml
 WORKDIR /usr/local/service
 RUN mvn clean package
-CMD[ "java", "-cp", "target/my-app-1.0-SNAPSHOT.jar/" ]
+CMD [ "java", "-cp", "target/my-app-1.0-SNAPSHOT.jar/" ]
