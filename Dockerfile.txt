@@ -1,6 +1,6 @@
 FROM maven:3.5.4-jdk-8 AS build
 
-RUN mvn -f /var/lib/jenkins/workspace/Docker/pom.xml clean package
+
 RUN mvn -f /var/lib/jenkins/.m2/repository/com/mycompany/app/my-app/1.0-SNAPSHOT/my-app-1.0-SNAPSHOT.pom clean package
 
 FROM openjdk:8
