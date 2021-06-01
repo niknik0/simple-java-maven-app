@@ -4,3 +4,7 @@ COPY pom.xml /usr/local/service/pom.xml
 WORKDIR /usr/local/service
 RUN mvn clean package
 CMD [ "java", "-cp", "target/my-app-1.0-SNAPSHOT.jar/" ]
+
+#FROM openjdk:8
+#COPY --from=build /usr/src/app/target/flighttracker-1.0.0-SNAPSHOT.jar /usr/app/flighttracker-1.0.0-SNAPSHOT.jar 
+#EXPOSE 8080
