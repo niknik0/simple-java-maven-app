@@ -15,6 +15,6 @@ RUN mvn clean package
 FROM ubuntu:18.04 
 RUN apt-get update && apt-get install -y \
     openjdk-8-jre
-COPY --from=build /usr/src/app/target/my-app-1.0-SNAPSHOT.jar /usr/app/my-app-1.0-SNAPSHOT.jar
+COPY --from=build /usr/local/service/target/my-app-1.0-SNAPSHOT.jar /usr/app/my-app-1.0-SNAPSHOT.jar
 EXPOSE 8080
 CMD [ "java", "-cp", "/usr/app/my-app-1.0-SNAPSHOT.jar" ]
